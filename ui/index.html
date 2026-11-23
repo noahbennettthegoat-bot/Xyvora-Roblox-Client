@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="mango">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xyvora — Launcher UI</title>
+  <meta name="color-scheme" content="dark light">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+  </div>
+
+  <div class="app" id="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="mango" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF1B6B"/>
+                <stop offset=".5" stop-color="#FF7A18"/>
+                <stop offset="1" stop-color="#B4E600"/>
+              </linearGradient>
+            </defs>
+            <rect x="6" y="6" width="52" height="52" rx="18" fill="url(#mango)"/>
+            <path d="M40 20.5c-2.2-1.8-5.1-2.9-8.3-2.9-7.3 0-13.2 6-13.2 13.4S24.4 44.4 31.7 44.4c3.2 0 6.1-1.1 8.3-2.9" stroke="#1a1208" stroke-width="4.6" stroke-linecap="round"/>
+            <path d="M41.5 31h-9" stroke="#1a1208" stroke-width="4.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">Xyvora</div>
+          <div class="brand-sub">Roblox for Linux</div>
+        </div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <button class="nav-item active" data-view="home"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg></span><span>Home</span></button>
+        <button class="nav-item" data-view="library"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></span><span>Library</span></button>
+        <button class="nav-item" data-view="plugins"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4.5 13H11l-1 9 9.5-11H13z"/></svg></span><span>Plugins</span><span class="nav-pill" id="pluginCountPill">4</span></button>
+        <button class="nav-item" data-view="settings"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1 1 0 0 0 .2 1.8l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1 1 0 0 0-1.8.2 1 1 0 0 0-.2.6V21a2 2 0 0 1-4 0v-.1a1 1 0 0 0-.7-.9 1 1 0 0 0-1.8.2l-.1.1a2 2 0 0 1-2.8-2.8l.1-.1a1 1 0 0 0-.2-1.8 1 1 0 0 0-.6-.2H3a2 2 0 0 1 0-4h.1a1 1 0 0 0 .9-.7 1 1 0 0 0-.2-1.8l-.1-.1a2 2 0 0 1 2.8-2.8l.1.1a1 1 0 0 0 1.8-.2h.1a1 1 0 0 0 .2-.6V3a2 2 0 0 1 4 0v.1a1 1 0 0 0 .7.9 1 1 0 0 0 1.8-.2l.1-.1a2 2 0 0 1 2.8 2.8l-.1.1a1 1 0 0 0 .2 1.8v.1a1 1 0 0 0 .6.2H21a2 2 0 0 1 0 4h-.1a1 1 0 0 0-.9.7z"/></svg></span><span>Settings</span></button>
+        <button class="nav-item" data-view="logs"><span class="nav-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6 4 4 6-8"/><path d="M14 7h6v6"/></svg></span><span>Logs</span></button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="device-mini" id="deviceMini">
+          <div class="device-mini-dot" id="deviceMiniDot"></div>
+          <div class="device-mini-text">
+            <div class="device-mini-title" id="deviceMiniTitle">Detecting device…</div>
+            <div class="device-mini-sub" id="deviceMiniSub">Checking Linux support</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="eyebrow">Launcher</p>
+          <h1 id="pageTitle">Home</h1>
+          <p class="subtitle" id="pageSubtitle">Run Roblox natively on Linux with Xyvora (based on Cordial).</p>
+        </div>
+        <div class="topbar-actions">
+          <div class="status-chip" id="statusChip"><span class="chip-dot" id="statusChipDot"></span><span id="statusChipText">Checking system…</span></div>
+          <button class="btn btn-ghost" id="refreshBtn" title="Refresh system status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+            Refresh
+          </button>
+          <button class="btn btn-primary" id="launchBtn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>
+            Launch
+          </button>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- HOME -->
+        <section class="view active" id="view-home">
+          <div class="hero">
+            <div class="hero-copy">
+              <div class="hero-badge">GPL-3.0 · No emulator · No container</div>
+              <h2>Native Roblox on Linux,<br><span class="mango-text">the Xyvora way.</span></h2>
+              <p class="hero-lead">Xyvora is built on the Cordial codebase, running Roblox's official Android build directly on Linux with a bionic/glibc shim, JNI VM, and Wayland/X11 support. No Wine. No virtual machine. No Android container.</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary btn-lg" data-action="launch"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg>Launch Roblox</button>
+                <button class="btn btn-ghost btn-lg" data-goto="settings">Configure</button>
+              </div>
+              <div class="hero-kpis">
+                <div class="kpi"><div class="kpi-val" id="kpiArch">—</div><div class="kpi-label">Architecture</div></div>
+                <div class="kpi"><div class="kpi-val" id="kpiSession">—</div><div class="kpi-label">Display session</div></div>
+                <div class="kpi"><div class="kpi-val" id="kpiRuntime">Native</div><div class="kpi-label">Runtime model</div></div>
+              </div>
+            </div>
+            <div class="hero-panel">
+              <div class="panel-glass">
+                <div class="panel-head">
+                  <div>
+                    <div class="panel-title">System readiness</div>
+                    <div class="panel-sub" id="readinessSub">Waiting for device detection…</div>
+                  </div>
+                  <span class="pill" id="readinessPill">Checking</span>
+                </div>
+                <div class="checklist" id="checklist"></div>
+                <div class="panel-note" id="panelNote">Xyvora targets Linux on x86_64 or aarch64 with a Wayland or X11 session.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <article class="info-card">
+              <div class="info-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4.5 13H11l-1 9 9.5-11H13z"/></svg></div>
+              <h3>Native runtime</h3>
+              <p>Loads Roblox's Android build with Cordial's bionic linker, glibc shim, and JNI VM — no emulator layer.</p>
+            </article>
+            <article class="info-card">
+              <div class="info-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M8 21h8"/></svg></div>
+              <h3>Wayland + X11</h3>
+              <p>Designed for modern Linux desktops. Wayland is primary; X11 is supported where available.</p>
+            </article>
+            <article class="info-card">
+              <div class="info-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+              <h3>Plugins & control</h3>
+              <p>Brokered plugin capabilities, flag inspection, presence, FPS controls, and transparent settings.</p>
+            </article>
+          </div>
+
+          <div class="split">
+            <section class="card">
+              <div class="card-head"><div><h3>Quick actions</h3><p>Common launcher tasks.</p></div></div>
+              <div class="action-list">
+                <button class="action" data-action="launch"><div><strong>Launch Roblox</strong><span>Start the client with your current profile.</span></div><span class="action-arrow">→</span></button>
+                <button class="action" data-action="check"><div><strong>Run system check</strong><span>Re-detect device, session, and tool availability.</span></div><span class="action-arrow">→</span></button>
+                <button class="action" data-goto="plugins"><div><strong>Manage plugins</strong><span>Enable, inspect, and review brokered capabilities.</span></div><span class="action-arrow">→</span></button>
+                <button class="action" data-goto="logs"><div><strong>View logs</strong><span>Inspect recent launcher/runtime events.</span></div><span class="action-arrow">→</span></button>
+              </div>
+            </section>
+            <section class="card">
+              <div class="card-head"><div><h3>Release snapshot</h3><p>From the imported Cordial codebase (Xyvora fork).</p></div></div>
+              <div class="meta-list">
+                <div class="meta-row"><span>Project</span><strong>Xyvora (Cordial-based)</strong></div>
+                <div class="meta-row"><span>Version</span><strong id="verText">0.34.2</strong></div>
+                <div class="meta-row"><span>License</span><strong>GPL-3.0-or-later</strong></div>
+                <div class="meta-row"><span>Targets</span><strong>Linux x86_64 / aarch64</strong></div>
+                <div class="meta-row"><span>Display</span><strong>Wayland / X11</strong></div>
+                <div class="meta-row"><span>Plugins</span><strong id="pluginMeta">4 bundled</strong></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <!-- LIBRARY -->
+        <section class="view" id="view-library">
+          <div class="card">
+            <div class="card-head"><div><h3>Library</h3><p>Games and experiences you launch through Cordial.</p></div><div class="search-wrap"><input id="libSearch" class="input" type="search" placeholder="Search library…"></div></div>
+            <div class="library-grid" id="libraryGrid"></div>
+          </div>
+        </section>
+
+        <!-- PLUGINS -->
+        <section class="view" id="view-plugins">
+          <div class="card">
+            <div class="card-head"><div><h3>Bundled plugins</h3><p>Brokered capabilities — plugins don't get raw sockets or file descriptors.</p></div></div>
+            <div class="plugin-grid" id="pluginGrid"></div>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="view" id="view-settings">
+          <div class="settings-grid">
+            <section class="card">
+              <div class="card-head"><div><h3>Appearance</h3><p>Customize the launcher UI.</p></div></div>
+              <div class="setting-row">
+                <div><div class="setting-label">Theme</div><div class="setting-desc">Choose the UI accent theme.</div></div>
+                <select class="input select" id="themeSelect">
+                  <option value="mango">Mango (default)</option>
+                  <option value="frostbite">Frostbite</option>
+                  <option value="midnight">Midnight</option>
+                  <option value="light">Light</option>
+                </select>
+              </div>
+              <div class="setting-row">
+                <div><div class="setting-label">Compact mode</div><div class="setting-desc">Reduce spacing for smaller displays.</div></div>
+                <label class="switch"><input type="checkbox" id="compactToggle"><span></span></label>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><div><h3>Runtime</h3><p>Xyvora/Cordial runtime behavior.</p></div></div>
+              <div class="setting-row">
+                <div><div class="setting-label">Display backend</div><div class="setting-desc">Preferred display backend when available.</div></div>
+                <select class="input select" id="backendSelect">
+                  <option value="auto">Auto (Wayland preferred)</option>
+                  <option value="wayland">Wayland</option>
+                  <option value="x11">X11</option>
+                </select>
+              </div>
+              <div class="setting-row">
+                <div><div class="setting-label">Recording (F9)</div><div class="setting-desc">Enable in-client recording via ffmpeg.</div></div>
+                <label class="switch"><input type="checkbox" id="recordToggle" checked><span></span></label>
+              </div>
+              <div class="setting-row">
+                <div><div class="setting-label">Capture game audio</div><div class="setting-desc">Include game audio in recordings.</div></div>
+                <label class="switch"><input type="checkbox" id="audioToggle" checked><span></span></label>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><div><h3>Client behavior</h3><p>Launcher and startup options.</p></div></div>
+              <div class="setting-row">
+                <div><div class="setting-label">Auto-restart on loading hang</div><div class="setting-desc">Retry launch if Roblox stalls on loading (up to 2 times).</div></div>
+                <label class="switch"><input type="checkbox" checked><span></span></label>
+              </div>
+              <div class="setting-row">
+                <div><div class="setting-label">Show flag conflicts at startup</div><div class="setting-desc">Print Roblox flag conflicts clearly in logs.</div></div>
+                <label class="switch"><input type="checkbox" checked><span></span></label>
+              </div>
+              <div class="setting-row">
+                <div><div class="setting-label">Developer logs</div><div class="setting-desc">Enable verbose runtime diagnostics.</div></div>
+                <label class="switch"><input type="checkbox" id="verboseToggle"><span></span></label>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card-head"><div><h3>About this UI</h3><p>Local HTML launcher UI for Cordial.</p></div></div>
+              <div class="about-callout">
+                <div class="about-logo" aria-hidden="true">C</div>
+                <div>
+                  <div class="about-name">Xyvora Launcher UI</div>
+                  <div class="about-sub">HTML preview UI · served by <code>ui_server.py</code></div>
+                </div>
+              </div>
+              <div class="meta-list">
+                <div class="meta-row"><span>Server</span><strong><code>python3 ui_server.py</code></strong></div>
+                <div class="meta-row"><span>API</span><strong><code>/api/system</code></strong></div>
+                <div class="meta-row"><span>Repo</span><strong>luohoa97/cordial (imported base)</strong></div>
+                <div class="meta-row"><span>Branch</span><strong class="mono">arena/bf275a0e-xyvora-roblox-client</strong></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <!-- LOGS -->
+        <section class="view" id="view-logs">
+          <div class="card">
+            <div class="card-head"><div><h3>Launcher logs</h3><p>Live UI events and system checks (preview).</p></div>
+              <button class="btn btn-ghost btn-sm" id="clearLogsBtn">Clear</button>
+            </div>
+            <div class="log-shell" id="logShell" aria-live="polite"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
