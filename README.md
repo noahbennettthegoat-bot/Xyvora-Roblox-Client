@@ -44,9 +44,9 @@ Roblox's **Meta Quest** build in VR on Linux, playing
 [Full size](https://raw.githubusercontent.com/luohoa97/cordial/main/docs/media/cordial-vr.mp4);
 setting it up is in [`docs/vr.md`](docs/vr.md).
 
-## Launcher UI (local preview)
+## Xyvora Launcher UI (local preview)
 
-A polished local HTML launcher UI is included in [`ui/`](ui/) for quick preview and development.
+A polished local HTML launcher UI is included in [`ui/`](ui/) for quick preview and development of our Xyvora fork.
 
 ```bash
 python3 ui_server.py --host 0.0.0.0 --port 3000

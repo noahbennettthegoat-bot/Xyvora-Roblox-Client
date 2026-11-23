@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Cordial UI preview/dev server.
+"""Xyvora UI preview/dev server (based on Cordial).
 
-Serves the local launcher UI from ./ui and exposes a small /api/system endpoint
+Serves the local Xyvora launcher UI from ./ui and exposes a small /api/system endpoint
 for device/runtime detection. No external dependencies.
 """
 
@@ -83,7 +83,7 @@ def detect_system() -> dict[str, Any]:
 
     blockers: list[str] = []
     if not supported_os:
-        blockers.append("Cordial targets Linux. This device is not running Linux.")
+        blockers.append("Xyvora targets Linux. This device is not running Linux.")
     if not supported_arch:
         blockers.append(f"Architecture '{arch}' is not supported yet (expected x86_64 or aarch64).")
 
@@ -91,12 +91,12 @@ def detect_system() -> dict[str, Any]:
     if supported and not wayland and not x11:
         notes.append("No Wayland/X11 display detected in this environment; UI preview still works, but the client needs a graphical session.")
     if supported and not checks["flatpak"]:
-        notes.append("Flatpak not detected. Flatpak is the recommended install path for Cordial.")
+        notes.append("Flatpak not detected. Flatpak is the recommended install path.")
     if supported and not checks["cargo"]:
         notes.append("Rust toolchain not detected. Source builds need cargo/rustc.")
 
     return {
-        "app": "Cordial",
+        "app": "Xyvora",
         "supported": supported,
         "os": {
             "system": sysname,
@@ -123,7 +123,7 @@ class Handler(SimpleHTTPRequestHandler):
         super().end_headers()
 
     def log_message(self, fmt: str, *args: object) -> None:  # noqa: A003
-        print(f"[cordial-ui] {self.address_string()} - {fmt % args}")
+        print(f"[xyvora-ui] {self.address_string()} - {fmt % args}")
 
     def _send_json(self, payload: dict[str, Any], status: HTTPStatus = HTTPStatus.OK) -> None:
         body = json.dumps(payload).encode("utf-8")
@@ -144,7 +144,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Serve the Cordial launcher UI preview.")
+    parser = argparse.ArgumentParser(description="Serve the Xyvora launcher UI preview.")
     parser.add_argument("--host", default="0.0.0.0")
     parser.add_argument("--port", type=int, default=3000)
     args = parser.parse_args()
@@ -158,7 +158,7 @@ def main() -> None:
         allow_reuse_address = True
 
     with Server((args.host, args.port), handler) as httpd:
-        print(f"Cordial UI running at http://{args.host}:{args.port}")
+        print(f"Xyvora UI running at http://{args.host}:{args.port}")
         print(f"Serving: {UI_DIR}")
         try:
             httpd.serve_forever()

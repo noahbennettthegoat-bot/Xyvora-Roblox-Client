@@ -13,7 +13,7 @@ const LIBRARY = [
 ];
 
 const VIEW_META = {
-  home: ['Launcher', 'Home', 'Run Roblox natively on Linux with Cordial.'],
+  home: ['Launcher', 'Home', 'Run Roblox natively on Linux with Xyvora (based on Cordial).'],
   library: ['Launcher', 'Library', 'Your experiences and quick-launch entries.'],
   plugins: ['Plugins', 'Plugins', 'Manage bundled Cordial plugins and brokered capabilities.'],
   settings: ['Settings', 'Settings', 'Tune runtime, appearance, and launcher behavior.'],
@@ -195,8 +195,8 @@ function wire() {
     const a = action.dataset.action;
     if (a === 'launch') {
       const game = action.dataset.game ? ` (${action.dataset.game})` : '';
-      if (state.system && !state.system.supported) { toast('This device is not supported by Cordial yet.'); return; }
-      toast(`Launch requested${game}. Connect this UI to cordial-shell to start Roblox.`);
+      if (state.system && !state.system.supported) { toast('This device is not supported by Xyvora yet.'); return; }
+      toast(`Launch requested${game}. Connect this UI to the Xyvora/Cordial shell to start Roblox.`);
       log(`Launch requested${game}`, 'info');
     } else if (a === 'check') {
       toast('Refreshing system status…');
@@ -227,7 +227,7 @@ async function init() {
   renderLogs();
   wire();
   setView('home');
-  log('Cordial launcher UI initialized');
+  log('Xyvora launcher UI initialized');
   await fetchSystem();
 }
 
