@@ -60,10 +60,37 @@ It returns detected platform information used by the UI, including:
 - available runtime/renderer options
 - package hint for the detected Linux family
 
+## Main launcher (`Main.py`)
+
+`Main.py` is the main Xyvora launcher script. It uses an **Android runtime on Linux (Waydroid)** to run the Roblox Android client - the same general method used by Sober (running Roblox through Android compatibility on Linux).
+
+### Commands
+
+```bash
+python3 Main.py check                 # Detect device/support and runtime readiness
+python3 Main.py setup                 # Show/setup guidance for Waydroid
+python3 Main.py status --json         # Runtime/device status
+python3 Main.py ui --port 3000        # Start the UI preview server
+python3 Main.py config --init         # Write default config to ~/.config/xyvora/config.json
+python3 Main.py run --dry-run --install-apk --apk /path/to/roblox.apk --start-session
+python3 Main.py run --install-apk --apk /path/to/roblox.apk --start-session
+```
+
+### What `run` does
+
+1. Verifies Linux device support and Waydroid availability
+2. Optionally starts a Waydroid session
+3. Optionally installs a Roblox Android APK into Waydroid
+4. Launches `com.roblox.client` through `waydroid app launch`
+
+> Note: Full launch requires a Linux system with Waydroid/binder support and a Roblox Android APK. Use `--dry-run` to verify the launch flow without executing commands.
+
 ## Project structure
 
 ```text
 .
+├── .gitignore
+├── Main.py
 ├── README.md
 ├── server.py
 └── ui/
