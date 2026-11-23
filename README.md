@@ -44,6 +44,17 @@ Roblox's **Meta Quest** build in VR on Linux, playing
 [Full size](https://raw.githubusercontent.com/luohoa97/cordial/main/docs/media/cordial-vr.mp4);
 setting it up is in [`docs/vr.md`](docs/vr.md).
 
+## Launcher UI (local preview)
+
+A polished local HTML launcher UI is included in [`ui/`](ui/) for quick preview and development.
+
+```bash
+python3 ui_server.py --host 0.0.0.0 --port 3000
+# open http://localhost:3000
+```
+
+The UI includes device readiness checks (`/api/system`), library/plugin views, theme switching, and launcher settings previews.
+
 ## Why Cordial
 
 I used Sober for a year, and it worked really well. Cordial started off as a weekend project because I was bored, and I believe a project like this is something people have the right to read, modify, and learn from.
